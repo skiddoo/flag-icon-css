@@ -1,7 +1,13 @@
 {
-  "name": "flag-icon-css",
+  "name": "@skiddoo/flag-icon-css",
   "version": "3.1.0",
   "author": "Panayiotis Lipiridis <lipiridis@gmail.com>",
+  "contributors": [
+    "Skiddoo Devs <devs@skiddoo.com.au> (https://www.skiddoo.com.au)"
+  ],
+  "publishConfig": {
+    "registry": "https://nexus.skiddoo.com.au/repository/npm-skiddoo"
+  },
   "licenses": [
     {
       "type": "MIT",
@@ -10,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "http://github.com/lipis/flag-icon-css"
+    "url": "http://github.com/skiddoo/flag-icon-css"
   },
   "devDependencies": {
     "grunt": "1.0.3",
@@ -21,6 +27,9 @@
     "svgo": "1.0.5"
   },
   "scripts": {
+    "skiddoo:tweak": "./skiddoo.sh",
+    "skiddoo": "npm run skiddoo:tweak && npm run svgo:min",
+    "prepublishOnly": "npm run skiddoo",
     "svgo": "svgo --pretty --indent=2 --precision=1 --config=svgo.yaml",
     "svgo:min": "find flags | grep '\\.svg$' | xargs -Iz -n 1 svgo --config=svgo.yaml z",
     "svgo:all": "find flags | grep '\\.svg$' | xargs -Iz -n 1 yarn svgo z"
